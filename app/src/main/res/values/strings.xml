@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Headlines</string>
+    <string name="shared_pref_key">shkey</string>
+    <string name="news">News</string>
+    <string name="downloaded">Downloaded</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

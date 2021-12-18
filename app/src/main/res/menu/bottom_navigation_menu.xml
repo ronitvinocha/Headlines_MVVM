@@ -1,0 +1,13 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/news"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_fiber_new_24"
+        android:title="@string/news"
+       />
+    <item
+        android:id="@+id/download"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_arrow_circle_down_24"
+        android:title="@string/downloaded"/>
+</menu>
