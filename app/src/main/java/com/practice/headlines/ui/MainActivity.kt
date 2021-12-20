@@ -31,24 +31,24 @@ class MainActivity : AppCompatActivity() {
         Log.d("😀",coreComponent.picaaso().toString())
         setupViewPager()
         setupBottomNavigation()
-        val mainViewModel: MainViewModel by viewModels<MainViewModel>{MyViewModelFactory(coreComponent)}
-        mainViewModel.getTopHeadlines().observe(this, Observer{
-            it?.let {resource->
-                when(resource.status){
-                    Status.SUCCESS -> {
-                        binding.progressbar.gone()
-                        Log.d("😀",resource.data.toString())
-                    }
-                    Status.ERROR -> {
-                        resource.message?.let { it1 -> Log.d("😀", it1) }
-                    }
-                    Status.LOADING -> {
-                        Log.d("😀","loading")
-                        binding.progressbar.visible()
-                    }
-                }
-            }
-        })
+//        val mainViewModel: MainViewModel by viewModels<MainViewModel>{MyViewModelFactory(coreComponent)}
+//        mainViewModel.getTopHeadlines().observe(this, Observer{
+//            it?.let {resource->
+//                when(resource.status){
+//                    Status.SUCCESS -> {
+//                        binding.progressbar.gone()
+//                        Log.d("😀",resource.data.toString())
+//                    }
+//                    Status.ERROR -> {
+//                        resource.message?.let { it1 -> Log.d("😀", it1) }
+//                    }
+//                    Status.LOADING -> {
+//                        Log.d("😀","loading")
+//                        binding.progressbar.visible()
+//                    }
+//                }
+//            }
+//        })
     }
 
     fun setupViewPager(){
@@ -69,6 +69,7 @@ class MainActivity : AppCompatActivity() {
             }
         })
     }
+
 
     fun setupBottomNavigation(){
         binding.bottomNavigation.selectedItemId= R.id.news

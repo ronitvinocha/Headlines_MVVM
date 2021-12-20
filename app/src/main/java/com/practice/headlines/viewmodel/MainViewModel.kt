@@ -8,9 +8,7 @@ import com.practice.headlines.repository.Repository
 import com.practice.headlines.util.Resource
 import kotlinx.coroutines.Dispatchers
 
-class MainViewModel(private val repository: Repository) :ViewModel() {
-
-
+class MainViewModel(val repository: Repository) :ViewModel() {
     fun getTopHeadlines() = liveData(Dispatchers.IO) {
         emit(Resource.loading(data = null))
         try {
