@@ -10,6 +10,7 @@
         <entry key="app/src/main/res/layout/fragment_downloads.xml" value="0.10869565217391304" />
         <entry key="app/src/main/res/layout/fragment_news.xml" value="0.11510416666666666" />
         <entry key="app/src/main/res/layout/recycleitem.xml" value="0.10869565217391304" />
+        <entry key="app/src/main/res/layout/recycleitemdownload.xml" value="0.1" />
         <entry key="app/src/main/res/menu/bottom_navigation_menu.xml" value="0.165" />
       </map>
     </option>

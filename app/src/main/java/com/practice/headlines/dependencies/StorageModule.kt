@@ -20,7 +20,7 @@ class StorageModule {
 
     @Provides
     @Singleton
-    fun provideRoomDb(context: Context):RoomDatabase{
+    fun provideRoomDb(context: Context):AppDatabase{
         return Room.databaseBuilder(context,AppDatabase::class.java,"app.db").build()
     }
 }

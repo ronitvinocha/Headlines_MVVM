@@ -12,6 +12,9 @@ import com.practice.headlines.MyViewModelFactory
 import com.practice.headlines.Myapplication
 import com.practice.headlines.R
 import com.practice.headlines.adapters.RecycleViewAdapter
+import com.practice.headlines.model.Articles
+import com.practice.headlines.model.DownloadStatus
+import com.practice.headlines.persistance.Article
 import com.practice.headlines.util.Status
 import com.practice.headlines.util.gone
 import com.practice.headlines.util.visible
@@ -41,7 +44,35 @@ class NewsFragment : BaseFragment(R.layout.fragment_news) {
         super.onAttach(context)
         myApplication=this.activity?.application as Myapplication
         picasso= myApplication.coreComponent.picaaso()
-        newsadapter= RecycleViewAdapter(picasso)
+        newsadapter= RecycleViewAdapter(picasso,this,R.layout.recycleitem)
+    }
+
+    override fun onClick(article: Articles,position:Int) {
+
+        mainViewModel.saveArticle(article).observe(viewLifecycleOwner, Observer {
+            it?.let {resource->
+                when(resource.status){
+                    Status.SUCCESS -> {
+                        article.downloaded=DownloadStatus.DOWNLOAD
+                        newsadapter.changeDataAtIndex(article,position)
+                    }
+                    Status.ERROR -> {
+                        resource.message?.let { it1 -> Log.d("😀", it1) }
+                        article.downloaded=DownloadStatus.NDTDOWNLOAD
+                        newsadapter.changeDataAtIndex(article,position)
+                    }
+                    Status.LOADING -> {
+                        article.downloaded=DownloadStatus.LOADING
+                        newsadapter.changeDataAtIndex(article,position)
+                    }
+                }
+            }
+        })
+
+    }
+
+    override fun onRemoveClick(article: Articles, position: Int) {
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -51,8 +82,9 @@ class NewsFragment : BaseFragment(R.layout.fragment_news) {
                 when(resource.status){
                     Status.SUCCESS -> {
                         progressBar.gone()
-
-                        resource.data?.let { it1 -> newsadapter.setData(it1.articles) }
+                        resource.data?.let {
+                                it1 -> newsadapter.setData(it1)
+                        }
                         Log.d("😀",resource.data.toString())
                     }
                     Status.ERROR -> {

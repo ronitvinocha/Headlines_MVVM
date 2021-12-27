@@ -2,6 +2,7 @@ package com.practice.headlines.dependencies
 
 import android.content.SharedPreferences
 import androidx.room.RoomDatabase
+import com.practice.headlines.persistance.AppDatabase
 import com.squareup.picasso.Picasso
 import dagger.Component
 import retrofit2.Retrofit
@@ -15,6 +16,6 @@ import javax.inject.Singleton
 interface CoreComponent {
     fun retrofit():Retrofit
     fun sharedPrefrence():SharedPreferences
-    fun roomDB():RoomDatabase
+    fun roomDB():AppDatabase
     fun picaaso():Picasso
 }

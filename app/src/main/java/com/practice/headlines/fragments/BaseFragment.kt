@@ -8,8 +8,9 @@ import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.practice.headlines.R
+import com.practice.headlines.clicklistener.RecyclerViewClickListner
 
-abstract class BaseFragment(val layoutId:Int): Fragment() {
+abstract class BaseFragment(val layoutId:Int): Fragment(),RecyclerViewClickListner {
     protected lateinit var recyclerView: RecyclerView
     protected lateinit var progressBar:ProgressBar
 

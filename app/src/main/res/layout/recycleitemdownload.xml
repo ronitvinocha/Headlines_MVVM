@@ -31,22 +31,11 @@
             </View>
         </androidx.cardview.widget.CardView>
     </FrameLayout>
-    <ProgressBar
-        android:id="@+id/progressbar"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:visibility="gone"
-        android:indeterminateTint="@color/white"
-        android:indeterminateTintMode="src_atop"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-    </ProgressBar>
     <ImageView
         android:id="@+id/downloadimage"
         android:layout_width="40dp"
         android:layout_height="40dp"
+        android:src="@drawable/ic_baseline_clear_24"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         app:layout_constraintTop_toTopOf="parent"

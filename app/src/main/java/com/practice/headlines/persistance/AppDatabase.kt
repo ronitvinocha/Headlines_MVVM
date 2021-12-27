@@ -1,37 +1,37 @@
 package com.practice.headlines.persistance
-
 import androidx.room.*
-import io.reactivex.Flowable
+import kotlinx.coroutines.flow.Flow
 
 @Database(entities = arrayOf(Article::class), version = 1,exportSchema = false)
 abstract class AppDatabase:RoomDatabase (){
     abstract fun NewsDescriptionDao(): NewsDescriptionDao
 }
 
-@Entity(tableName = "News")
+@Entity
 data class Article(
-    @ColumnInfo(name = "title")var title: String?,
-    @ColumnInfo(name = "description")var description: String?,
-    @ColumnInfo(name = "urltoimage")var urltoimage: String?,
-    @ColumnInfo(name = "date")var date: String?,
-    @ColumnInfo(name = "source")var source: String?
+    val sourceId    : String?,
+    val sourceName  : String?,
+    val author      : String?,
+    val title       : String?,
+    val description : String?,
+    val url         : String?,
+    val urlToImage  : String?,
+    val publishedAt : String?,
+    val content     : String?
 ){
     @PrimaryKey(autoGenerate = true)
-    var uid: Long = 0
+    var id: Int=0
 }
 
 @Dao
 interface NewsDescriptionDao {
-    @Query("SELECT * FROM News ")
-    fun getDescriptions(): Flowable<List<Article>>
-
-    @Insert
-    fun insert(news: Article)
+    @Query("SELECT * FROM Article")
+    fun getArticles(): Flow<List<Article>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertPhotoDescriptions(vararg article: Article)
+    suspend fun insertArticle(vararg article: Article):List<Long>
 
-    @Query("DELETE FROM News")
-    fun nukeTable()
+    @Query("DELETE FROM Article WHERE id = :id")
+    suspend fun delete(id:Int)
 }
 
