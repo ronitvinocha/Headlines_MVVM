@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.navOptions
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.practice.headlines.MyViewModelFactory
 import com.practice.headlines.Myapplication
@@ -75,9 +77,14 @@ class NewsFragment : BaseFragment(R.layout.fragment_news) {
 
     }
 
+    override fun onItemClick(article: Articles) {
+        val action = NewsFragmentDirections.actionNewsToDescriptionActivity(article.urlToImage!!,article.title!!,article.description!!,article.publishedAt!!,article.source?.name!!)
+        NavHostFragment.findNavController(this).navigate(action)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        mainViewModel.getTopHeadlines().observe(viewLifecycleOwner, Observer {
+        mainViewModel.topHeadlines.observe(viewLifecycleOwner, Observer {
             it?.let {resource->
                 when(resource.status){
                     Status.SUCCESS -> {

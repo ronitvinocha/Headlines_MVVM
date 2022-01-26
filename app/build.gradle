@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
@@ -81,4 +82,9 @@ dependencies {
     //piccaso
     implementation "com.squareup.picasso:picasso:2.71828"
     implementation "com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0"
+
+    //navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$rootProject.navigationVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$rootProject.navigationVersion"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 }

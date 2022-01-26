@@ -69,7 +69,9 @@ class RecycleViewAdapter(val picasso: Picasso,val clickListner: RecyclerViewClic
                 clickListner.onRemoveClick(data,position)
             }
         }
-
+        holder.itemView.setOnClickListener {
+            clickListner.onItemClick(list[position])
+        }
     }
 
     override fun getItemCount(): Int {

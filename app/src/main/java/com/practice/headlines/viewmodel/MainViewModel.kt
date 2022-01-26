@@ -15,7 +15,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 
 class MainViewModel(val repository: Repository) :ViewModel() {
-    fun getTopHeadlines() = liveData(Dispatchers.IO) {
+    val topHeadlines = liveData(Dispatchers.IO) {
         emit(Resource.loading(data = null))
         try {
             repository.getArticlefromdb().collect {
@@ -54,7 +54,7 @@ class MainViewModel(val repository: Repository) :ViewModel() {
         }
     }
 
-    fun getArticlesFromDB()=liveData(Dispatchers.IO){
+    val articlesFromDB=liveData(Dispatchers.IO){
         emit(Resource.loading(data = null))
         try {
             repository.getArticlefromdb().collect {

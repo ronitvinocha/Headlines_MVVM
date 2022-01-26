@@ -18,7 +18,7 @@ abstract class BaseFragment(val layoutId:Int): Fragment(),RecyclerViewClickListn
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View = inflater.inflate(layoutId, container)
+    ): View = inflater.inflate(layoutId, container,false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

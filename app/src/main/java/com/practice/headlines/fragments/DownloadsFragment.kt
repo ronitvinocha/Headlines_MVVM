@@ -9,6 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.practice.headlines.MyViewModelFactory
 import com.practice.headlines.Myapplication
@@ -16,6 +18,8 @@ import com.practice.headlines.R
 import com.practice.headlines.adapters.RecycleViewAdapter
 import com.practice.headlines.model.Articles
 import com.practice.headlines.model.DownloadStatus
+import com.practice.headlines.ui.DescriptionActivity
+import com.practice.headlines.ui.DescriptionActivityArgs
 import com.practice.headlines.util.Status
 import com.practice.headlines.util.gone
 import com.practice.headlines.util.visible
@@ -51,7 +55,7 @@ class DownloadsFragment : BaseFragment(R.layout.fragment_news) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        mainViewModel.getArticlesFromDB().observe(viewLifecycleOwner, Observer {
+        mainViewModel.articlesFromDB.observe(viewLifecycleOwner, Observer {
             it?.let {resource->
                 when(resource.status){
                     Status.SUCCESS -> {
@@ -102,6 +106,11 @@ class DownloadsFragment : BaseFragment(R.layout.fragment_news) {
                 }
             }
         })
+    }
+
+    override fun onItemClick(article: Articles) {
+        val action = DownloadsFragmentDirections.actionDownloadToDescriptionActivity(article.urlToImage!!,article.title!!,article.description!!,article.publishedAt!!,article.source?.name!!)
+        findNavController(this).navigate(action)
     }
 
     companion object {
