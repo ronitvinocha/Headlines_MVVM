@@ -13,7 +13,7 @@ import rx.Observer
 class Repository (private  val coreComponent: CoreComponent){
 
     suspend fun getTopHeadlines():NewsApiResponse{
-       return coreComponent.retrofit().create(Apis::class.java).getTopHeadlines("US","business",1,"7851dde50bc345b4979c5b6dcec07f7e")
+       return coreComponent.retrofit().create(Apis::class.java).getTopHeadlines("In","business",1,"7851dde50bc345b4979c5b6dcec07f7e")
     }
 
     suspend fun addArticle(article: Article):Boolean{

@@ -3,9 +3,12 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
-    <color name="background">#464646</color>
+    <color name="background">#F8F8FB</color>
     <color name="black">#000000</color>
+    <color name="jet">#555555</color>
     <color name="white">#ffffff</color>
-    <color name="textcolorwhite1">#bababa</color>
+    <color name="textcolorwhite1">#C1C0BF</color>
     <color name="textcolorwhite2">#f2f2f2</color>
+    <color name="savecolor">#94C77D</color>
+
 </resources>

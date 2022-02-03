@@ -4,15 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
     app:startDestination="@id/news">
-
     <fragment
         android:id="@+id/news"
         android:name="com.practice.headlines.fragments.NewsFragment"
-        android:label="fragment_news"
+        android:label=""
         tools:layout="@layout/fragment_news" >
         <action
             android:id="@+id/action_news_to_descriptionActivity"
-            app:destination="@id/descriptionActivity"
+            app:destination="@id/descriptionFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
@@ -22,11 +21,11 @@
     <fragment
         android:id="@+id/download"
         android:name="com.practice.headlines.fragments.DownloadsFragment"
-        android:label="DownloadsFragment"
+        android:label="Saved"
         tools:layout="@layout/fragment_news" >
         <action
             android:id="@+id/action_download_to_descriptionActivity"
-            app:destination="@id/descriptionActivity"
+            app:destination="@id/descriptionFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
@@ -34,26 +33,14 @@
             app:popUpTo="@id/download"
             />
     </fragment>
-    <activity
-        android:id="@+id/descriptionActivity"
-        android:name="com.practice.headlines.ui.DescriptionActivity"
-        android:label="activity_description"
-        tools:layout="@layout/activity_description">
+    <fragment
+        android:id="@+id/descriptionFragment"
+        android:name="com.practice.headlines.fragments.DescriptionFragment"
+        android:label="DescriptionFragment" >
         <argument
-            android:name="urltoimage"
-            app:argType="string"/>
-        <argument
-            android:name="title"
-            app:argType="string"/>
-        <argument
-            android:name="description"
-            app:argType="string"/>
-        <argument
-            android:name="date"
-            app:argType="string"/>
-        <argument
-            android:name="source"
-            app:argType="string"/>
-    </activity>
+            android:name="article"
+            app:argType="com.practice.headlines.model.Articles"/>
+    </fragment>
+
 
 </navigation>

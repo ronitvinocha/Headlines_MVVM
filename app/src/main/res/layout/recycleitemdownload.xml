@@ -1,89 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="300dp"
+    android:layout_height="wrap_content"
     android:id="@+id/itemlayout"
-    android:layout_marginTop="24dp"
+    android:layout_marginTop="15dp"
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="120dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/frame">
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="15dp">
-            <ImageView
+            android:id="@+id/imagecard"
+            app:cardCornerRadius="5dp">
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:src="@color/white"
-                android:layout_gravity="center"
-                android:adjustViewBounds="true"
-                android:id="@+id/image">
-            </ImageView>
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="120dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/noimage_avaialble"
+                    android:layout_gravity="center"
+                    android:adjustViewBounds="true"
+                    android:id="@+id/image">
+                </ImageView>
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:id="@+id/title"
+                            android:scrollHorizontally="true"
+                            android:ellipsize="end"
+                            android:layout_weight="1"
+                            android:maxLines="5"
+                            android:layout_marginTop="5dp"
+                            android:textAlignment="textStart"
+                            android:layout_marginStart="10dp"
+                            android:transitionName="sharedtext"
+                            android:textColor="@color/black"
+                            android:textSize="14sp"
+                            android:fontFamily="@font/robotoslab_regular"
+                            >
+                        </TextView>
+                        <ImageButton
+                            android:id="@+id/remove"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_gravity="end"
+                            android:background="@android:color/transparent"
+                            android:src="@drawable/ic_baseline_clear_24"
+                            >
+                        </ImageButton>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/sourcelayout"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginStart="10dp"
+                        app:layout_constraintTop_toBottomOf="@id/description">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:id="@+id/source"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:textAlignment="textStart"
+                            android:transitionName="sharedtext"
+                            android:textColor="@color/jet"
+                            android:textSize="15sp"
+                            android:fontFamily="@font/robotoslab_regular"
+                            >
+                        </TextView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:id="@+id/date"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:textSize="12sp"
+                            android:layout_marginEnd="10dp"
+                            android:textColor="@color/textcolorwhite1"
+                            android:fontFamily="@font/robotoslab_regular">
+                        </TextView>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
             <View
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:background="@drawable/gradiant">
+                android:layout_height="300dp">
             </View>
         </androidx.cardview.widget.CardView>
     </FrameLayout>
-    <ImageView
-        android:id="@+id/downloadimage"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:src="@drawable/ic_baseline_clear_24"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-    </ImageView>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/title"
-        app:layout_constraintBottom_toTopOf="@id/sourcelayout"
-        android:layout_marginBottom="20dp"
-        android:textAlignment="textStart"
-        android:transitionName="sharedtext"
-        android:textColor="@color/textcolorwhite2"
-        android:textSize="20sp"
-        android:layout_marginStart="16dp"
-        android:fontFamily="@font/robotoslab_regular"
-        >
-
-    </TextView>
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/sourcelayout"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="12dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:textColor="@color/textcolorwhite1"
-            android:id="@+id/source"
-            android:textSize="12sp"
-            android:fontFamily="@font/robotoslab_bold"
-            android:layout_marginStart="16dp">
-        </TextView>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/date"
-            app:layout_constraintStart_toEndOf="@+id/source"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginStart="16dp"
-            android:textSize="12sp"
-            android:textColor="@color/textcolorwhite1"
-            android:fontFamily="@font/robotoslab_regular">
-        </TextView>
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

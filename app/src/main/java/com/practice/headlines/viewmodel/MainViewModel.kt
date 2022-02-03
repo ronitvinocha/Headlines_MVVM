@@ -11,6 +11,7 @@ import com.practice.headlines.model.Source
 import com.practice.headlines.persistance.Article
 import com.practice.headlines.repository.Repository
 import com.practice.headlines.util.Resource
+import com.practice.headlines.util.getParsedDate
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 
@@ -59,7 +60,9 @@ class MainViewModel(val repository: Repository) :ViewModel() {
         try {
             repository.getArticlefromdb().collect {
                 val articles:List<Articles> = it.map{ Articles(Source(it.sourceId,it.sourceName),it.author,it.title,it.description,it.url,it.urlToImage,it.publishedAt,it.content, downloaded = DownloadStatus.DOWNLOAD,id=it.id)}
-                emit(Resource.success(data = articles))
+                val comparator= Comparator{first:Articles,second:Articles->if(getParsedDate(first.publishedAt!!).after(getParsedDate(second.publishedAt!!)))-1 else 1 }
+                val sortedArticles=articles.sortedWith(comparator)
+                emit(Resource.success(data = sortedArticles))
             }
         }catch (exception: Exception){
             emit(exception.message?.let { Resource.error(data = false, message = it) })
