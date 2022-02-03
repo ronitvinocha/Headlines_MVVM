@@ -79,6 +79,7 @@ class NewsFragment : BaseFragment(R.layout.fragment_news) {
                 when(resource.status){
                     Status.SUCCESS -> {
                         Log.d("🤬","newsfragmentlates")
+                        binding.nointernet.gone()
                         progressBar.gone()
                         resource.data?.let {
                                 it1 -> newsadapter.setData(it1)
@@ -86,11 +87,13 @@ class NewsFragment : BaseFragment(R.layout.fragment_news) {
                     }
                     Status.ERROR -> {
                         resource.message?.let { it1 -> Log.d("😀", it1) }
+                        progressBar.gone()
+                        binding.nointernet.visible()
                     }
                     Status.LOADING -> {
-
+                        progressBar.visible()
+                        binding.nointernet.gone()
                         Log.d("😀","loading")
-
                     }
                 }
             }

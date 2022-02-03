@@ -21,7 +21,7 @@ import kotlin.collections.ArrayList
 
 class RecycleViewAdapter(val picasso: Picasso,val clickListner: RecyclerViewClickListner,val view:Int): RecyclerView.Adapter<BaseViewHolder>() {
     private val list = mutableListOf<Articles>()
-    private lateinit var intialArticleList:ArrayList<Articles>
+    private var intialArticleList:ArrayList<Articles> =ArrayList()
     companion object{
         private const val NEWS_VIEW = R.layout.recycleitem
         private const val DOWNLOAS_VIEW=R.layout.recycleitemdownload
